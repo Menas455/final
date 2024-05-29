@@ -3,6 +3,7 @@ const express = require('express');
 const routes = express.Router();
 const fs = require('fs');
 const util = require('util');
+const path = require('path');
 
 //importaciones necesarias
 const conexion = require('../server/server')
@@ -17,7 +18,7 @@ routes.get('/images', middleware.verificar ,(req, res) => {
 routes.get('/users',  middleware.verificar, (req, res) => {
     res.render('users', { admin: true })
 });
-routes.post('/users', upload.single('imagen'), (req, res) => {
+routes.post('/users', upload.single('imagenUser'), (req, res) => {
     // Verifica si alguno de los campos está vacío
     if (req.file == '' || req.body.nombre == '' || req.body.descrip == '') {
         return res.json({ status: 'vacio'});
@@ -58,16 +59,15 @@ routes.post('/users', upload.single('imagen'), (req, res) => {
     });
 });
 
-routes.post('/images', upload.single('imagen'), (req, res) => {
+routes.post('/images', upload.single('images'), (req, res) => {
     // Verifica si alguno de los campos está vacío
-    if (req.file == '') {
+    if (!req.file) {
         return res.json({ status: 'vacio'});
     }
 
     const imagenPath = req.file.path;
     const nombre = req.body.nombre;
     const descrip = req.body.descrip;
-
     const binaryImage = fs.readFileSync(imagenPath); // Lee la imagen desde el archivo
     const imagenBase64 = binaryImage.toString("base64"); // Convierte la imagen a base64
 

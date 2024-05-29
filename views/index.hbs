@@ -460,7 +460,7 @@
         </div>
          <div class="mb-3">
         <label for="images" class="form-label">Imagen</label>
-        <input type="file" class="form-control" id="imagen" name="imagen">
+        <input type="file" class="form-control" id="imagenUser" name="imagenUser">
         </div>
         <div class="mb-3">
         <label for="descrip" class="form-label">Descripción</label>
@@ -490,7 +490,7 @@
         <form id="form-img" enctype="multipart/form-data">
           <div class="mb-3">
             <label for="images" class="form-label">Imagen</label>
-            <input type="file" class="form-control" id="imagen" name="imagen">
+            <input type="file" class="form-control" id="images" name="images">
           </div>
           <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Agregar</button>
@@ -631,6 +631,9 @@
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     const formulario = document.getElementById('form-user');
+    const nombreInput = document.getElementById('nombre');
+    const imageInput = document.getElementById('imagenUser');
+    const descrip = document.getElementById('descrip');
 
     formulario.addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
@@ -650,6 +653,9 @@
                     icon: "success"
                 }).then(() => {
     // Cerrar la ventana modal después de mostrar la alerta
+    nombreInput.value = "";
+    imageInput.value = "";
+    descrip.value = "";
     $('#staticBackdrop').modal('hide');
 
     // Construir el HTML para el nuevo cumpleañero
@@ -687,10 +693,10 @@
     </script>
     {{!-- Agregar imagen --}}
     <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
     const formulario = document.getElementById('form-img');
-    const imageInput = document.getElementById('imagen');
-    const modal = new bootstrap.Modal(document.getElementById('staticBackdropImages')); // Obtener el objeto modal
+    const imageInput = document.getElementById('images');
+
 
     formulario.addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
@@ -722,10 +728,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     `;
                     // Agregar el nuevo cumpleañero al principio de la lista sin recargar la página
                     $('.imageContainer').prepend(newImageHTML);
-                  
-                    // Limpiar el input y ocultar el modal después de agregar la imagen exitosamente
-                    modal.hide(); // Ocultar el modal
-                    imageInput.value = ''; // Limpiar el input
+                    imageInput.value = "";
+                    $('#staticBackdropImages').modal('hide');
+                   
                 });
             } else if(data.status === 'vacio') {
                 Swal.fire({
@@ -736,19 +741,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => {
-            console.error('Error al enviar el formulario:', error);
+            console.log('Error al enviar el formulario:', error);
             // Puedes mostrar un mensaje de error al usuario si la solicitud falla
         });
     });
-
-    // Agregar evento para limpiar el input cuando el modal se oculta
-    modal._element.addEventListener('hidden.bs.modal', function () {
-        imageInput.value = ''; // Limpiar el input
-    });
 });
-</script>
-   
-
+    </script>
 </body>
 
 </html>
