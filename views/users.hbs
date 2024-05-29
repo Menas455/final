@@ -6,7 +6,10 @@
         <meta name="description" content />
         <meta name="author" content />
         <title>Modern Business - Start Bootstrap Template</title>
+<<<<<<< HEAD
         
+=======
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -15,12 +18,15 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/users.css" rel="stylesheet" />
     </head>
+<<<<<<< HEAD
       <style>
  
     body{
         background: rgb(245,245,245);
     }
 </style>
+=======
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -35,7 +41,11 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+<<<<<<< HEAD
                                     <li><a class="dropdown-item" href="/galerys">Glaeria de usuarios</a></li>
+=======
+                                    <li><a class="dropdown-item" href="/galery/users">Glaeria de usuarios</a></li>
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
                                     <li><a class="dropdown-item" href="/galery">Galeria de fotografias</a></li>
                                     <li><a class="dropdown-item" href="/images">Agregar fotografias</a></li>
                                 </ul>
@@ -51,13 +61,21 @@
                     <div class="bg-light rounded-3 py-5 px-4 px-md-5 mb-5">
                         <div class="text-center mb-5">
                             <div class="feature bg-success bg-gradient text-white rounded-3 mb-3 p-3"><i class="fa-solid fa-user"></i></div>
+<<<<<<< HEAD
                             <h1 class="fw-bolder fw-bold">Agregar nuevo cumpleañero</h1>
+=======
+                            <h1 class="fw-bolder fw-bold">Agregar neuvo cumpleañero</h1>
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
                             <p class="lead fw-normal text-muted mb-0">We'd love to hear from you</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
     
+<<<<<<< HEAD
                                  <form id="contactForm" enctype="multipart/form-data">
+=======
+                                 <form id="contactForm" action="/users" method="post" enctype="multipart/form-data">
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
                                    
                                     <!-- input-->
                                     <div class="form-floating mb-3">
@@ -117,6 +135,7 @@
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<<<<<<< HEAD
      <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -154,6 +173,17 @@
     });
 });
     </script>
+=======
+    {{#if alert}}
+    <script>
+            Swal.fire({
+            title: "{{title}}",
+            text: "{{text}}",
+            icon: "{{icon}}"
+            });
+    </script>
+    {{/if}}
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
 
 
     </body>

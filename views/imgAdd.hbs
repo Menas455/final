@@ -17,12 +17,15 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styleImg.css" rel="stylesheet" />
     </head>
+<<<<<<< HEAD
       <style>
  
     body{
         background: rgb(245,245,245);
     }
 </style>
+=======
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
     <body class="d-flex flex-column">
         <main class="flex-shrink-0">
             <!-- Navigation-->
@@ -36,7 +39,11 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+<<<<<<< HEAD
                                      <li><a class="dropdown-item" href="/galerys">Glaeria de usuarios</a></li>
+=======
+                                     <li><a class="dropdown-item" href="/galery/users">Glaeria de usuarios</a></li>
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
                                     <li><a class="dropdown-item" href="/users">Agregar usuario</a></li>
                                     <li><a class="dropdown-item" href="/galery">Galeria de fotografias</a></li>
                                     <li><hr class="dropdown-divider" /></li>  
@@ -61,7 +68,11 @@
                         <div class="row gx-5 justify-content-center">
                             <div class="col-lg-8 col-xl-6">
                    
+<<<<<<< HEAD
                                 <form id="contactForm">
+=======
+                                <form id="contactForm" action="/images" method="post" enctype="multipart/form-data">
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
                                     <!-- Phone number input-->
                                     <div class="form-floating mb-3">
                                         <input class="form-control" id="imagen" name="imagen" type="file" data-sb-validations="required" />
@@ -110,6 +121,7 @@
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<<<<<<< HEAD
     
      <script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -150,5 +162,16 @@
     </script>
 
 
+=======
+    {{#if alert}}
+    <script>
+            Swal.fire({
+            title: "{{title}}",
+            text: "{{text}}",
+            icon: "{{icon}}"
+            });
+    </script>
+    {{/if}}
+>>>>>>> 53ba0ea32ca82d7a7b39d9332438913acf718170
     </body>
 </html>
