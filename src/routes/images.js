@@ -100,8 +100,6 @@ routes.post('/images', upload.single('images'), (req, res) => {
     
 });
 
-
-
 routes.get('/galery', images.galery,);
 routes.get('/galerys', images.galeryUser,);
 routes.post('/eliminar', images.eliminarHomeImg);

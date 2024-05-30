@@ -67,10 +67,11 @@ exports.index = async (req, res) => {
       image.imagen_base64 = image.images_blob.toString("base64");
     });
 
+    const noticias = await query("SELECT * FROM noticias");
     const token = req.cookies.jwt;
 
     // Renderiza la plantilla con los datos recuperados de la base de datos
-    res.render("index", { admin: token, imagenes: images, users });
+    res.render("index", { admin: token, imagenes: images, users, noticias });
 
   } catch (error) {
     console.error("Error al recuperar imágenes de la base de datos:", error);

@@ -26,63 +26,58 @@
 </style>
 <body id="page-top">
 
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container">
-            <div class="container">
-                <a class="navbar-brand" href="#">
-                    <img src="/img/logo-contraloria.png" alt="Bootstrap" width="60" height="54">
-                    <a class="navbar-brand" href="#page-top">CONTRALORIA </a>
-                </a>
-            </div>
+   <!-- Navigation-->
+<nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/img/logo-contraloria.png" alt="Bootstrap" width="60" height="54">
+            CONTRALORIA
+        </a>
 
+        <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
 
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
-                data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
-                aria-expanded="false" aria-label="Toggle navigation">
-                Menu
-                <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#portfolio">Nosotros</a></li>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="#portfolio">Nosotros</a></li>
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#about">About</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="#about">About</a></li>
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#noticias">Noticias</a></li>
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="#noticias">Noticias</a></li>
 
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
-                            href="#events">Cumpleañeros</a></li>
-                    <!--  -->
+                <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded"
+                        href="#events">Cumpleañeros</a></li>
 
-                    <li class="nav-item mx-0 mx-lg-1 dropdown mt-2">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">Más</a>
-                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="/aac">Atencion al ciudadano</a></li>
-                            <li><a class="dropdown-item" href="/galerys">Glaeria de usuarios</a></li>
-                            <li><a class="dropdown-item" href="/galery">Galeria de fotografias</a></li>
-                            {{#if admin}}
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="/users">Agregar usuario</a></li>
-                            <li><a class="dropdown-item" href="/images">Agregar fotografias</a></li>
-                            <li>
-                                <hr class="dropdown-divider" />
-                            </li>
-                            <li><a class="dropdown-item" href="/cerrar">Cerrar sesión</a></li>
-                            {{/if}}
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                <li class="nav-item dropdown mt-2">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Más</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/aac">Atencion al ciudadano</a></li>
+                        <li><a class="dropdown-item" href="/galerys">Glaeria de usuarios</a></li>
+                        <li><a class="dropdown-item" href="/galery">Galeria de fotografias</a></li>
+                        <!-- Agrega las siguientes líneas solo si el usuario es admin -->
+                        {{#if admin}}
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop">Agregar usuario</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdropImages">Agregar fotografias</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/cerrar">Cerrar sesión</a></li>
+                        {{/if}}
+                    </ul>
+                </li>
+            </ul>
         </div>
-
-    </nav>
+    </div>
+</nav>
 
     <!-- Header-->
     <header class="bg-dark py-5" style="
@@ -239,7 +234,8 @@
 
     {{!-- noticias --}}
     <section class="" id="noticias">
-        <h1 class="text-center mt-5 mb-5">NOTICIAS</h1>
+        <h1 class="text-center mt-5 mb-5">NOTICIAS {{#if admin}}<a data-bs-toggle="modal" data-bs-target="#staticBackdropNoticies" ><i
+                    class="fa-solid fa-calendar-plus text-dark"></i></a> {{/if}}</h1>
         <!-- Icon Divider-->
         <div class="divider-custom divider-dark">
             <div class="divider-custom-line"></div>
@@ -250,101 +246,46 @@
         <div class="p-5 row">
             <div class="col-md-8 shadow-lg p-3 mb-5 bg-body-tertiary rounded" style="border-top-left-radius: 5px;
                            border-bottom-left-radius: 5px;">
-                <h5 class="text-center">Titulo</h5>
-                <p class="p-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, corporis! Debitis quis
-                    obcaecati unde dolorem pariatur fugiat eveniet perspiciatis dignissimos dolore necessitatibus.
-                    Recusandae voluptatum sequi tenetur eveniet molestiae modi minima.
-                    Debitis, nesciunt quis praesentium commodi nulla aperiam laborum laboriosam porro error inventore
-                    distinctio ex placeat corporis aliquam quo, temporibus, expedita assumenda ut a maxime architecto.
-                    Aliquam nobis vel ducimus ex!
-                    Dolor molestiae ipsa rerum sapiente at reprehenderit labore veniam vel culpa beatae iusto aut
-                    laboriosam incidunt alias necessitatibus illum eos, itaque saepe neque ad facilis libero voluptates
-                    corrupti amet! Explicabo?
-                    Explicabo nemo laudantium vero itaque temporibus assumenda corrupti repudiandae expedita nihil
-                    excepturi cumque inventore quas, commodi officia id, animi fugit ducimus. Assumenda excepturi
-                    praesentium nostrum officiis rem alias accusamus voluptas.
-                    Architecto optio rem reiciendis vel necessitatibus quasi itaque, repudiandae nostrum error
-                    consequuntur aspernatur amet ullam deleniti temporibus facilis magnam laborum maiores sit excepturi
-                    sint voluptatem, eligendi nesciunt! Neque, eligendi earum?
-                    Excepturi earum nulla quam, mollitia est tempore doloremque facilis deserunt quisquam corrupti!
-                    Mollitia fuga aut animi eligendi dolore nulla reprehenderit, ipsam porro debitis. Nisi iste iure
-                    delectus fugiat cumque accusantium?
-                    Iusto sed labore rerum quo laborum est illum ipsam nihil reiciendis nostrum numquam, maiores
-                    quisquam eaque explicabo, itaque impedit pariatur molestiae quidem sit eos non vel optio cum minus.
-                    Deserunt?
-                    Perspiciatis, amet ad doloribus velit sequi exercitationem delectus officia beatae animi, quidem
-                    iusto quas alias iste aliquid similique natus quam nemo saepe fugit ullam veniam tenetur tempore
-                    temporibus. Cumque, ut.
-                    Cupiditate molestias numquam fugiat obcaecati dolor dignissimos. Eius culpa tempore, sunt sed
-                    molestiae quod dicta eos animi? Placeat enim veritatis nemo dolor optio magni voluptas ad, corporis
-                    magnam, libero fugiat?
-                    Similique perspiciatis repudiandae accusantium,
+               <div class="container noticiasContainer">
+                {{#if admin}}
+                {{#each noticias}}
+                    <a class="btn-close p-5"></a>
+                 <h5 class="text-center">{{tituloOne}} </h5>
+                <p class="p-4">{{descripOne}} 
                 </p>
 
-                <p>
-                    vitae iste nam iusto magnam possimus rerum ipsam! Inventore voluptate aliquid aut ratione vel quis
-                    optio facere ad laudantium, repellat quia debitis unde tempora ex cum?
-                    Deleniti ipsam sunt minus nemo dolorem architecto obcaecati, harum eos odio ipsa! Voluptates alias
-                    atque accusantium, est deserunt iure nobis ducimus expedita voluptatum exercitationem modi quisquam
-                    perferendis soluta recusandae porro.
-                    Dolorem eius, saepe minima magni magnam corrupti commodi dignissimos ipsa? Illo at quisquam
-                    dignissimos inventore provident, expedita ex non possimus, voluptas deserunt totam nam aspernatur
-                    laboriosam incidunt asperiores ipsam consectetur.
-                    Dignissimos, beatae officia? Cumque, nulla asperiores aspernatur voluptates repellendus dolore enim
-                    ea sit facilis laborum. Temporibus eos nostrum officiis maiores et ipsa dignissimos neque labore,
-                    blanditiis, illum ullam exercitationem doloremque?
-                    Ut asperiores ullam ratione autem consectetur tenetur voluptate eum, repellat eius nesciunt hic in
-                    suscipit ducimus iste veniam? Nobis aperiam laborum, voluptates error earum veritatis voluptate
-                    numquam deleniti voluptas dolor.
-                    Atque voluptatem ullam unde fugit delectus odio, ea necessitatibus? Commodi quam rem, cupiditate sit
-                    repellat aliquam blanditiis nemo voluptatibus! Officiis commodi consequatur quo nam animi non
-                    voluptatibus iure cumque aperiam!
-                    Asperiores quod quibusdam quo eos ipsam consectetur autem dolorum error, minus eligendi et unde non
-                    debitis illum itaque molestiae nulla perspiciatis officiis optio esse vero. Excepturi consequatur
-                    pariatur cupiditate nostrum.
-                    Est molestiae optio at itaque reprehenderit nam libero, quae sequi quasi illo, assumenda placeat aut
-                    aperiam magnam doloribus sint perferendis similique minima velit facilis quaerat dignissimos. Enim
-                    eveniet dolore facilis.
-                    Veniam corporis fuga vero ab aspernatur itaque consequatur aut iste laborum adipisci. Ipsa rerum
-                    amet ratione alias? Dolore exercitationem dolorum distinctio aliquam magnam. Optio soluta voluptate
-                    distinctio fugiat earum natus!
-                    Repudiandae aliquam quis adipisci eius autem expedita ut perferendis dolorem eos labore eligendi
-                    exercitationem facilis sequi incidunt consequatur, tempore inventore pariatur ratione ipsa, rerum
-                    deleniti similique illo neque. Ut, veniam?
-                    Architecto ducimus eveniet facere. Beatae suscipit odit nemo! Delectus tempore numquam, dolorem, eum
-                    perspiciatis rem ex praesentium facilis iure quisquam laudantium dolore corporis inventore pariatur
-                    minima expedita, sapiente repudiandae commodi.
-                </p>
+               </div>
             </div>
             <div class="col-md-4 shadow p-3 mb-5 bg-dark" style="border-top-right-radius: 5px;
                            border-bottom-right-radius: 5px;">
-                <h5 class="text-center text-light">Titulo</h5>
-                <p class="p-4 text-light ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat esse, sit
-                    enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligendi minima
-                    aliquam recusandae!</p>
+               <div class="container">
+       
+                <a class="btn-close p-5"></a>
+                 <h5 class="text-center text-light">{{tituloTwe}}</h5>
+               
+                <p class="p-4 text-light ">{{descripTwe}}</p>
+                {{/each}}
 
-                <p class="p-4 text-light ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat esse, sit
-                    enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligendi minima
-                    aliquam recusandae!</p>
+                {{else}}
+                {{#each noticias}}
+        
+                 <h5 class="text-center">{{tituloOne}} </h5>
+                <p class="p-4">{{descripOne}} 
+                </p>
 
-                <p class="p-4 text-light ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat esse, sit
-                    enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligeLorem, ipsum
-                    dolor sit amet consectetur adipisicing elit. Repellat esse, sit enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligLorem, ipsum
-                    dolor sit amet consectetur adipisicing elit. Repellat esse, sit enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligendi minima
-                    aliquam recusandae!endi minima aliquam recusandae!ndi minLorem, ipsum dolor sit amet consectetur
-                    adipisicing elit. Repellat esse, sit enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligendi minima
-                    aliquam recusandae!ima aliquam recusandae!</p>
+               </div>
+            </div>
+            <div class="col-md-4 shadow p-3 mb-5 bg-dark" style="border-top-right-radius: 5px;
+                           border-bottom-right-radius: 5px;">
+               <div class="container">
+       
 
-                <p class="p-4 text-light ">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat esse, sit
-                    enim, cumque
-                    velit ex alias eos eum amet necessitatibus nesciunt hic explicabo ut, iste eveniet eligendi minima
-                    aliquam recusandae!</p>
+                 <h5 class="text-center text-light">{{tituloTwe}}</h5>
+               
+                <p class="p-4 text-light ">{{descripTwe}}</p>
+                {{/each}}
+                {{/if}}
+               </div>
 
             </div>
         </div>
@@ -354,7 +295,7 @@
     <section class="testimonials text-center bg-light container mt-5 mb-5 p-5" id="events">
     <!-- section images -->
     <div class="container">
-        <h2 class="mb-2">CUMPLEAÑEROS DEL MES {{#if admin}}<a data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i
+        <h2 class="mb-2">CUMPLEAÑEROS DEL MES {{#if admin}}<a data-bs-toggle="modal" data-bs-target="#staticBackdrop" ><i
                     class="fa-solid fa-calendar-plus text-dark"></i></a> {{/if}}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider-dark mb-5">
@@ -406,16 +347,16 @@
             <div class="row">
                 <!-- Footer Location-->
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Nuestra ubicación</h4>
+                    <h4 class="text-uppercase mb-4"><a style="text-decoration: none;" href="https://maps.app.goo.gl/2RW2Rskv8Y5sZuo86">Nuestra ubicación</a></h4>
                     <p class="lead mb-0">
-                        2215 John Daniel Drive
+                      Contraloría Del Estado Portuguesa
                         <br />
-                        Clark, MO 65243
+                        Carrera 5, Guanare Estado Portuguesa
                     </p>
                 </div>
                 <!-- Footer Social Icons-->
                 <div class="col-lg-4 mb-5 mb-lg-0">
-                    <h4 class="text-uppercase mb-4">Nuestras redes sociales</h4>
+                    <h4 class="text-uppercase mb-4 text-primary">Nuestras redes sociales</h4>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i
                             class="fab fa-fw fa-facebook-f"></i></a>
                     <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-twitter"></i></a>
@@ -425,11 +366,12 @@
                 </div>
                 <!-- Footer About Text-->
                 <div class="col-lg-4">
-                    <h4 class="text-uppercase mb-4">Aqui algo mas </h4>
+                    <h4 class="text-uppercase mb-4 text-primary">Nuestro contato</h4>
                     <p class="lead mb-0">
-                        texto de ejemplo para el footer para completar los campos
-                        <a href="">algo mas</a>
-                        .
+                      <i class="fa-solid fa-phone"></i> contraloria@gmail.com
+                       <br>
+                       <i class="fa-solid fa-envelope"></i> +254127856324
+                       <br>
                     </p>
                 </div>
             </div>
@@ -501,6 +443,53 @@
   </div>
 </div>
 
+
+
+    {{!-- modal noticias --}}
+<div class="modal fade" id="staticBackdropNoticies" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+      <form id="form-noticias" enctype="multipart/form-data">
+
+        <div class="mb-3">
+        <label for="tituloOne" class="form-label">Titulo 1</label>
+        <input type="text" class="form-control" id="tituloOne" name="tituloOne" placeholder="Maicol Mena" disabled>
+        </div>
+  
+        <div class="mb-3">
+        <label for="descripOne" class="form-label">Descripción 1</label>
+        <textarea  class="form-control" id="descripOne" name="descripOne" rows="3" placeholder="Maicol es un desarrollador web..."></textarea>
+        </div>
+
+        <hr class="divider">
+
+        <div class="mb-3">
+        <label for="tituloTwe" class="form-label">Titulo 2</label>
+        <input type="text" class="form-control" id="tituloTwe" name="tituloTwe" placeholder="Maicol Mena">
+        </div>
+  
+        <div class="mb-3">
+        <label for="descripTwe" class="form-label">Descripción 2</label>
+        <textarea class="form-control" id="descripTwe" name="descripTwe" rows="3" placeholder="Maicol es un desarrollador web..."></textarea>
+        </div>
+        <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">agregar</button>
+      </div>
+      </form>
+
+
+      </div>
+      
+    </div>
+  </div>
+</div>
 
  
     <!-- Bootstrap core JS-->
@@ -746,6 +735,67 @@
         });
     });
 });
+    </script>
+     {{!-- Agregar noticias --}}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const formulario = document.getElementById('form-noticias');
+    const nombreInputOne = document.getElementById('nombreOne');
+    const descripOne = document.getElementById('descripOne');
+    const nombreInputTwe = document.getElementById('nombreTwe');
+    const descripTwe = document.getElementById('descripTwe');
+
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
+
+        const formData = new FormData(formulario); // Crea un objeto FormData con los datos del formulario
+
+        fetch('/noticias', {
+              method: 'POST',
+              body: JSON.stringify({ id: cardId }),
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                Swal.fire({
+                    title: "Agregado!",
+                    text: "Se agregó un nuevo cumpleaños",
+                    icon: "success"
+                }).then(() => {
+    // Cerrar la ventana modal después de mostrar la alerta
+   nombreInputOne.value = "";
+   descripOne.value = "";
+   nombreInputTwe.value = "";
+   descripTwe.value = "";
+    $('#staticBackdropNoticies').modal('hide');
+
+    // Construir el HTML para el nuevo cumpleañero
+    const newCumpleaneroHTML = `
+        
+    `;
+
+    // Agregar el nuevo cumpleañero al principio de la lista sin recargar la página
+    $('.noticiasContainer').prepend(newCumpleaneroHTML);
+});
+
+            }else if(data.status === 'vacio'){
+                    Swal.fire({
+                    title: "Alerta!",
+                    text: "Llene todos los campos",
+                    icon: "info"
+                    })
+            }
+        })
+        .catch(error => {
+            console.error('Error al enviar el formulario:', error);
+            // Puedes mostrar un mensaje de error al usuario si la solicitud falla
+        });
+    });
+});
+
     </script>
 </body>
 
