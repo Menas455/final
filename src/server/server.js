@@ -8,7 +8,6 @@ const conexion = mysql.createConnection({
     host: 'localhost'
 });
 
-
 conexion.connect((err)=>{
 
     if(err)console.log('Error al conectar a la bd' + err);

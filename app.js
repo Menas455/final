@@ -13,9 +13,7 @@ const bodyParser = require('body-parser');
 app.use(express.static(path.join(__dirname, 'public'))); 
 hbs.registerPartials(path.join(__dirname, './src/views', 'partials')); 
 app.set('view engine', 'hbs');
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
 //Para procesar datos enviados desde los froms
@@ -33,6 +31,7 @@ dotenv.config({path: '.env'});
 app.use('/', require('./src/routes/images'));
 app.use('/', require('./src/routes/sesion'));
 app.use('/', require('./src/routes/ac'));
+app.use('/', require('./src/routes/noticies'));
 
 
 app.listen(3000, ()=>{

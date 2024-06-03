@@ -60,8 +60,7 @@
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
-                            <li><a class="dropdown-item" href="/users">Agregar usuario</a></li>
-                            <li><a class="dropdown-item" href="/images">Agregar fotografias</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Agregar usuario</a></li>
                             <li>
                                 <hr class="dropdown-divider" />
                             </li>
@@ -81,11 +80,11 @@
                 <div class="container">
          <div class="row">
             <div class="col-lg-12 text-center mt-5 my-2 mb-5">
-                <h4>FOTOGRAFIAS DE LOS EVENTOS EN LA CONTRALORIA DEL DESTADO PORTUGUESA</h4>
+                <h4>FOTOGRAFIAS DE LOS CUMPLEAÑEROS DEL DESTADO PORTUGUESA</h4>
             </div>
          </div>
       
-        <div class="container col-md-12 row mt-5 d-flex justify-content-center">
+        <div class="cumpleContainer container col-md-12 row mt-5 d-flex justify-content-center ">
         {{!-- ============================================= --}}
     {{#if admin}}
     {{#each imagen}}
@@ -120,33 +119,57 @@
          </section>
         </main>
 
-
-        <script>
-           $('.portfolio-menu ul li').click(function(){
-         	$('.portfolio-menu ul li').removeClass('active');
-         	$(this).addClass('active');
-         	
-         	var selector = $(this).attr('data-filter');
-         	$('.portfolio-item').isotope({
-         		filter:selector
-         	});
-         	return  false;
-         });
-         $(document).ready(function() {
-         var popup_btn = $('.popup-btn');
-         popup_btn.magnificPopup({
-         type : 'image',
-         gallery : {
-         	enabled : true
-         }
-         });
-         });
-      </script>
+            {{!-- modal user --}}
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar nuevo cumpleañero</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    document.addEventListener('click', function(event) {
+      <form id="form-user" enctype="multipart/form-data">
+        <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Maicol Mena">
+        </div>
+         <div class="mb-3">
+        <label for="images" class="form-label">Imagen</label>
+        <input type="file" class="form-control" id="imagenUser" name="imagenUser">
+        </div>
+        <div class="mb-3">
+        <label for="descrip" class="form-label">Descripción</label>
+        <textarea class="form-control" id="descrip" name="descrip" rows="3" placeholder="Maicol es un desarrollador web..."></textarea>
+        </div>
+        <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">agregar</button>
+      </div>
+      </form>
+
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/scripts.js"></script>
+
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {{!-- cumpleañero --}}
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+       document.addEventListener('click', function(event) {
       if (event.target && event.target.classList.contains('eliminar-btn')) {
         const card = event.target.closest('.card');
         const cardId = card.getAttribute('data-id');
@@ -197,18 +220,64 @@
         });
       }
     });
-  });
-</script>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="js/scripts.js"></script>
+    const formulario = document.getElementById('form-user');
+    const nombreInput = document.getElementById('nombre');
+    const imageInput = document.getElementById('imagenUser');
+    const descrip = document.getElementById('descrip');
 
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    formulario.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
 
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        const formData = new FormData(formulario); // Crea un objeto FormData con los datos del formulario
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        fetch('/users', {
+            method: 'POST',
+            body: formData // Envía los datos del formulario como FormData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                Swal.fire({
+                    title: "Agregado!",
+                    text: "Se agregó un nuevo cumpleaños",
+                    icon: "success"
+                }).then(() => {
+                    // Cerrar la ventana modal después de mostrar la alerta
+                    nombreInput.value = "";
+                    imageInput.value = "";
+                    descrip.value = "";
+                    $('#staticBackdrop').modal('hide');
+
+                    // Construir el HTML para el nuevo cumpleañero
+                          const newUsuarioHTML = `
+                      <div class="card col-md-3 m-1 shadow p-3 mb-5 bg-body-tertiary rounded" 
+                          style="width: 18rem;" data-id="${data.newUsuario.id}">
+                          <img src="data:image/jpeg;base64,${data.newUsuario.imagen_base64}" alt="imagen" class="card-img-top images-home">
+                          <div class="card-body">
+                              <p class="card-title fw-bold">${data.newUsuario.nombre}</p>
+                              <p class="card-text">${data.newUsuario.descripcion}</p>
+                              <a class="btn btn-danger eliminar-btn">eliminar</a>
+                          </div>
+                      </div>
+                  `;
+                  $('.cumpleContainer').prepend(newUsuarioHTML);
+                });
+            } else if (data.status === 'vacio') {
+                Swal.fire({
+                    title: "Alerta!",
+                    text: "Llene todos los campos",
+                    icon: "info"
+                });
+            }
+        })
+        .catch(error => {
+            console.error('Error al enviar el formulario:', error);
+            // Puedes mostrar un mensaje de error al usuario si la solicitud falla
+        });
+    });
+});
+    </script>
 </body>
 
 </html>

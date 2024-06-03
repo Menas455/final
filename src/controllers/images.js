@@ -26,7 +26,6 @@ exports.galery = async(req, res) => {
     res.status(500).send("Error interno del servidor");
   }
 }; 
-
 //mostrar informacion de los usuarios
 exports.galeryUser = async(req, res) => {
   
@@ -67,7 +66,7 @@ exports.index = async (req, res) => {
       image.imagen_base64 = image.images_blob.toString("base64");
     });
 
-    const noticias = await query("SELECT * FROM noticias");
+    const noticias = await query("SELECT * FROM noticias ORDER BY id DESC");
     const token = req.cookies.jwt;
 
     // Renderiza la plantilla con los datos recuperados de la base de datos

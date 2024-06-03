@@ -8,7 +8,7 @@ const path = require('path');
 //importaciones necesarias
 const conexion = require('../server/server')
 const images = require('../controllers/images');
-const upload = require('../controllers/upload');
+const upload = require('../middleware/upload');
 const middleware = require('../middleware/verify');
 const query = util.promisify(conexion.query).bind(conexion);
 
@@ -58,7 +58,6 @@ routes.post('/users', upload.single('imagenUser'), (req, res) => {
         });
     });
 });
-
 routes.post('/images', upload.single('images'), (req, res) => {
     // Verifica si alguno de los campos está vacío
     if (!req.file) {
